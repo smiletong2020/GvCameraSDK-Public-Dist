@@ -16,3 +16,5 @@ cmake_install.cmake
 *.bin
 *.ply
 *.bmp
+*.log
+dist_out/bin/*/log/
