@@ -37,23 +37,13 @@ foreach(sample_source IN LISTS GVSDK_SAMPLE_SOURCES)
         )
     endforeach()
 
-    if(GVSDK_ENABLE_DEBUG_VARIANT)
-        add_custom_command(
-            TARGET "${sample_name}"
-            POST_BUILD
-            COMMAND "${CMAKE_COMMAND}" -E copy_if_different
-                "$<IF:$<CONFIG:Debug>,${GVSDK_DEBUG_RUNTIME_DLL},${GVSDK_RELEASE_RUNTIME_DLL}>"
-                "$<TARGET_FILE_DIR:${sample_name}>"
-        )
-    else()
-        add_custom_command(
-            TARGET "${sample_name}"
-            POST_BUILD
-            COMMAND "${CMAKE_COMMAND}" -E copy_if_different
-                "${GVSDK_RELEASE_RUNTIME_DLL}"
-                "$<TARGET_FILE_DIR:${sample_name}>"
-        )
-    endif()
+    add_custom_command(
+        TARGET "${sample_name}"
+        POST_BUILD
+        COMMAND "${CMAKE_COMMAND}" -E copy_if_different
+            "${GVSDK_RELEASE_RUNTIME_DLL}"
+            "$<TARGET_FILE_DIR:${sample_name}>"
+    )
 
     list(APPEND GVSDK_SAMPLE_TARGETS "${sample_name}")
 endforeach()
