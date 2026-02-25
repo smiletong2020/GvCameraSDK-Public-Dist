@@ -1,0 +1,18 @@
+# Build artifacts
+build_dist/
+
+# Visual Studio
+.vs/
+*.vcxproj.user
+*.VC.db
+*.opendb
+
+# CMake cache artifacts in source tree
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+
+# Runtime/sample output files
+*.bin
+*.ply
+*.bmp
